@@ -1,27 +1,27 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\ServiceController;
 
 
-// Home Route
-Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/', function () {
+    return view('home');
+})->name('home');
 
-// About Route
-Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
-// Services Route
-Route::get('/services', [PageController::class, 'services'])->name('services');
+Route::get('/services', [ServiceController::class, 'index'])->name('services');
+Route::get('/services/{id}', [ServiceController::class, 'show'])->name('services.show');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+//Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
+Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
 
 
+require __DIR__.'/auth.php';
 

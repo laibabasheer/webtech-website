@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -10,36 +10,64 @@
 
         <!-- Search Bar -->
         <div class="mb-4">
-            <input type="text" id="searchBar" class="form-control" placeholder="Search for services..." />
+            <input type="text" id="searchBar" class="form-control" placeholder="Search for services..." onkeyup="filterServices()" />
         </div>
 
+        <!-- Services List -->
         <div class="row" id="services-list">
-            <!-- Service 1 -->
-            <div class="col-md-4 service-item">
-                <div class="service-box">
-                    <img src="{{ asset('/images/web.jpg') }}" alt="Web Development" class="img-fluid">
-                    <h3>Web Development</h3>
-                    <p>We create custom websites that help businesses grow. Our team uses the latest technologies to develop responsive and functional websites.</p>
+            @foreach ($services as $service)
+                <div class="col-md-4 service-item">
+                    <div class="service-box">
+                        <img src="{{ asset('/images/' . $service->image) }}" alt="{{ $service->name }}" class="img-fluid rounded">
+                        <h3>{{ $service->name }}</h3>
+                        <p>{{ $service->description }}</p>
+                    </div>
                 </div>
-            </div>
-            <!-- Service 2 -->
-            <div class="col-md-4 service-item">
-                <div class="service-box">
-                    <img src="{{ asset('/images/app.jpg') }}" alt="Mobile App Development" class="img-fluid">
-                    <h3>Mobile App Development</h3>
-                    <p>We develop high-quality mobile applications for both iOS and Android platforms, focusing on usability and performance.</p>
-                </div>
-            </div>
-            <!-- Service 3 -->
-            <div class="col-md-4 service-item">
-                <div class="service-box">
-                    <img src="{{ asset('/images/SEO.jpg') }}" alt="SEO Services" class="img-fluid">
-                    <h3>SEO Services</h3>
-                    <p>We optimize websites to improve search engine rankings, drive traffic, and increase visibility for your business.</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
+
+<!-- Admin: Add New Service -->
+<section id="add-service" class="py-5">
+    <div class="container">
+        <h3 class="text-center mb-4">Add a New Service</h3>
+        <form action="{{ route('services.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="mb-3">
+                <label for="name" class="form-label">Service Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea id="description" name="description" class="form-control" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Service Image:</label>
+                <input type="file" id="image" name="image" class="form-control" required>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Create Service</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- JavaScript for Service Filtering -->
+<script>
+    function filterServices() {
+        let input = document.getElementById('searchBar').value.toLowerCase();
+        let serviceItems = document.getElementsByClassName('service-item');
+
+        Array.from(serviceItems).forEach(item => {
+            let name = item.querySelector('h3').textContent.toLowerCase();
+            if (name.includes(input)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+</script>
 
 @endsection

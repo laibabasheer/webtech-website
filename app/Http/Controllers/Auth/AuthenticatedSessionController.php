@@ -35,14 +35,15 @@ class AuthenticatedSessionController extends Controller
     /**
      * Destroy an authenticated session.
      */
-    public function destroy(Request $request): RedirectResponse
-    {
-        Auth::guard('web')->logout();
 
-        $request->session()->invalidate();
+    public function destroy(Request $request)
+{
+    Auth::guard('web')->logout();
 
-        $request->session()->regenerateToken();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
 
-        return redirect('/');
-    }
+    return redirect('/login'); // Redirect to the login page after logout
+}
+
 }

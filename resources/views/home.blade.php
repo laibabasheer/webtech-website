@@ -1,27 +1,49 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-
-<!-- Hero Section -->
-<header class="hero text-center text-white" style="background-image: url('{{ asset('/img/web.png') }}');">
-    <div class="container">
-        <h1 class="display-4 hero-heading" style="color: black;">Welcome to WebTech</h1>
-        <p class="lead hero-description" style="color: black;">Your One-Stop Solution for Web Development and IT Services</p>
-        <a href="{{ route('services') }}" class="btn btn-light btn-lg hero-btn">Explore Our Services</a>
-        <!-- About Us Section -->
-<section id="about" class="py-5">
-    <div class="container text-center">
-    <h3 class="display-4 hero-heading" style="color: black;">We Provide</h3>
-        <p class="section-description">We are a global IT services provider, specializing in custom software development, web solutions, and digital transformation.</p>
-        <img src="{{ asset('/images/OIP.jpg') }}" alt="About Us" class="img-fluid">
-
+    <div class="text-center">
+        <h1>Welcome to WebTech</h1>
+        <p>Your one-stop solution for tech services!</p>
     </div>
-</section>
 
+    <!-- Hero Section -->
+    <div class="my-4 text-center">
+        <img src="{{ asset('/images/Software-Houses-3.jpg') }}" alt="WebTech Solutions" class="img-fluid rounded" style="max-height: 400px;">
     </div>
-</header>
+
+    <!-- Services Section -->
+    <div class="my-5">
+        <h2 class="text-center">Our Services</h2>
+        <p class="text-center">We offer a wide range of tech solutions tailored to your needs.</p>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img src="{{ asset('/images/webb.jpg') }}" alt="Service 1" class="img-fluid my-3" style="max-width: 150px;">
+                <h4>Web Development</h4>
+                <p>Build responsive and user-friendly websites with our expert team.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="{{ asset('/images/app.jpg') }}" alt="Service 2" class="img-fluid my-3" style="max-width: 150px;">
+                <h4>App Development</h4>
+                <p>Customized mobile and desktop applications for your business.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="{{ asset('/images/SEO.jpg') }}" alt="Service 3" class="img-fluid my-3" style="max-width: 150px;">
+                <h4>SEO</h4>
+                <p>Reliable and scalable cloud computing solutions.</p>
+            </div>
+        </div>
+    </div>
 
 
-
-
+    <!-- Partners Section -->
+    <div class="my-5">
+        <h2 class="text-center">Our Partners</h2>
+        <p class="text-center">Proud to collaborate with leading tech companies.</p>
+        <div class="d-flex justify-content-center flex-wrap">
+            <img src="{{ asset('/images/OIP.jpg') }}" alt="Partner 1" class="img-fluid mx-3 my-2" style="max-height: 100px;">
+            <img src="{{ asset('/images/c1.jpg') }}" alt="Partner 2" class="img-fluid mx-3 my-2" style="max-height: 100px;">
+            <img src="{{ asset('/images/p1.jpg') }}" alt="Partner 3" class="img-fluid mx-3 my-2" style="max-height: 100px;">
+            <img src="{{ asset('/images/p2.jpg') }}" alt="Partner 4" class="img-fluid mx-3 my-2" style="max-height: 100px;">
+        </div>
+    </div>
 @endsection
