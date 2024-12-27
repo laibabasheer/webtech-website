@@ -15,19 +15,16 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     */
-    public function create(): View
+    
+    public function create()
     {
-        return view('auth.register');
+        if (auth()->check()) {
+            return redirect()->route('dashboard'); // Redirect authenticated users to dashboard
+        }
+    
+        return view('auth.register'); // Show the registration form to guests
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
@@ -48,4 +45,16 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    public function __construct()
+    {
+        $this->middleware('guest');
+        $this->middleware(function ($request, $next) {
+            if (auth()->check()) {
+                return redirect('/dashboard');
+            }
+            return $next($request);
+        });
+    }
+    
 }

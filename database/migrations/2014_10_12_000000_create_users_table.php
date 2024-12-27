@@ -34,3 +34,19 @@ return new class extends Migration
         Schema::dropIfExists('users');
     }
 };
+
+
+
+
+// Example migration for services table
+Schema::create('services', function (Blueprint $table) {
+    $table->id();
+    $table->string('name');
+    $table->text('description');
+    $table->string('role')->default('user'); // Default role is 'user'
+    $table->timestamps();
+});
+
+// Seeder for dummy data
+\App\Models\Service::create(['name' => 'Web Development', 'description' => 'We build modern websites.']);
+\App\Models\Service::create(['name' => 'App Development', 'description' => 'Custom mobile applications.']);

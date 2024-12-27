@@ -5,6 +5,8 @@
         <h1>Welcome to WebTech</h1>
         <p>Your one-stop solution for tech services!</p>
     </div>
+   
+
 
     <!-- Hero Section -->
     <div class="my-4 text-center">
@@ -15,7 +17,7 @@
     <div class="my-5">
         <h2 class="text-center">Our Services</h2>
         <p class="text-center">We offer a wide range of tech solutions tailored to your needs.</p>
-        <div class="row text-center">
+        <div id="services-list" class="row text-center">
             <div class="col-md-4">
                 <img src="{{ asset('/images/webb.jpg') }}" alt="Service 1" class="img-fluid my-3" style="max-width: 150px;">
                 <h4>Web Development</h4>
@@ -35,15 +37,4 @@
     </div>
 
 
-    <!-- Partners Section -->
-    <div class="my-5">
-        <h2 class="text-center">Our Partners</h2>
-        <p class="text-center">Proud to collaborate with leading tech companies.</p>
-        <div class="d-flex justify-content-center flex-wrap">
-            <img src="{{ asset('/images/OIP.jpg') }}" alt="Partner 1" class="img-fluid mx-3 my-2" style="max-height: 100px;">
-            <img src="{{ asset('/images/c1.jpg') }}" alt="Partner 2" class="img-fluid mx-3 my-2" style="max-height: 100px;">
-            <img src="{{ asset('/images/p1.jpg') }}" alt="Partner 3" class="img-fluid mx-3 my-2" style="max-height: 100px;">
-            <img src="{{ asset('/images/p2.jpg') }}" alt="Partner 4" class="img-fluid mx-3 my-2" style="max-height: 100px;">
-        </div>
-    </div>
 @endsection

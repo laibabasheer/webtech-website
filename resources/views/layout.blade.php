@@ -34,7 +34,7 @@
 
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-4">
-        <p>&copy; 2024 WebTech. All rights reserved.</p>
+        <p>&copy; 2025 WebTech. All rights reserved.</p>
         <!-- Scroll to Top Button -->
 <button id="scrollTopBtn" class="btn btn-danger" style="display: none; position: fixed; bottom: 30px; right: 30px; border-radius: 50%; padding: 15px; font-size: 20px;">
     <i class="fa fa-arrow-up"></i>

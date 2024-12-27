@@ -212,4 +212,9 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'aliases' => [
+    'Admin' => App\Models\Admin::class, // This is an example
+],
+
+
 ];
